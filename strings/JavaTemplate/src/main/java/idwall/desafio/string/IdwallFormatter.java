@@ -1,8 +1,7 @@
 package idwall.desafio.string;
 
-/**
- * Created by Rodrigo Catão Araujo on 06/02/2018.
- */
+
+
 public class IdwallFormatter extends StringFormatter {
 
     /**
@@ -13,6 +12,28 @@ public class IdwallFormatter extends StringFormatter {
      */
     @Override
     public String format(String text) {
-        throw new UnsupportedOperationException();
+    	String fortmated;
+    	StringBuilder novoTexto = new StringBuilder();
+ 
+	     String[] palavras = text.split(" ");
+
+	     int qntLetras = 0;
+	     int limiteLinha = 40;
+	     
+	     for (String palavra : palavras) {
+
+	       if(qntLetras + palavra.length() >= limiteLinha) {
+	         qntLetras = 0;
+	         novoTexto.append('\n');
+	       }
+
+	       novoTexto.append(palavra);
+	       novoTexto.append(' ');
+	       qntLetras += palavra.length() + 1;
+	     }     
+	    
+        fortmated = novoTexto.toString();
+	   
+        return fortmated;
     }
 }
